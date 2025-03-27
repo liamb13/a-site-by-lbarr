@@ -1,5 +1,6 @@
-"use client"
-import React, { useEffect } from "react"
+"use client";
+import React from "react";
+
 const signature = `%c
                                                                                      
                                                                                      
@@ -24,24 +25,41 @@ const signature = `%c
                                 000000000000000000000                                
                                                                                      
                                                                                      
-%c                  MADE BY LBARR.COM                  
+%c                         MADE BY: LBARR.COM                         
 %c                                                                                     
                                                                                      
-`
+`;
 
-const Credit = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      console.log(
-        signature,
-        "color: #007bff; background-color: #0f1333; font-size: 1rem; line-height: 1; font-family: monospace;",
-        "color: white; background-color: #0f1333; font-size: 1.603rem; line-height: 1; font-family: monospace;",
-        "color: #007bff; background-color: #0f1333; font-size: 1rem; line-height: 1; font-family: monospace;"
-      )
-    }, 1000)
-  }, [])
-
-  return null
+interface CreditProps {
+  delay?: number; // Delay in milliseconds before showing the signature
 }
 
-export default Credit
+/**
+ * A React component that displays a stylized console signature.
+ * The signature appears in the browser's console with custom styling and formatting.
+ *
+ * @example
+ * // Default usage (1 second delay)
+ * <Credit />
+ *
+ * @example
+ * // Custom delay
+ * <Credit delay={2000} /> // Show after 2 seconds
+ *
+ * @param {CreditProps} props - Component props
+ * @param {number} [props.delay=1000] - Delay in milliseconds before showing the signature
+ */
+const Credit = ({ delay = 1000 }: CreditProps) => {
+  setTimeout(() => {
+    console.log(
+      signature,
+      "color: #007bff; background-color: #0f1333; font-size: 12px; line-height: 15px; font-family: monospace;",
+      "color: white; background-color: #0f1333; font-size: 15px; line-height: 17px; font-family: monospace;",
+      "color: #007bff; background-color: #0f1333; font-size: 12px; line-height: 15px; font-family: monospace;"
+    );
+  }, delay);
+
+  return null;
+};
+
+export default Credit;
